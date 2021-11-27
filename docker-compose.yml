@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  ozet-core-proxy:
+    image: nginx:latest
+    container_name: ozet-core-proxy
+    restart: "on-failure"
+    ports:
+      - 10411:10411
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+  ozet-core:
+    image: ozetteam/ozet-server
+    container_name: ozet-server
+    restart: "on-failure"
+    env_file:
+      - "./.env"
+    expose:
+      - 8080
+    stdin_open: true
+    tty: true
