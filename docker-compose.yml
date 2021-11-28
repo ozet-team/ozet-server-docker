@@ -1,15 +1,15 @@
 version: "3.3"
 
 services:
-  ozet-core-proxy:
+  ozet-server-proxy:
     image: nginx:latest
-    container_name: ozet-core-proxy
+    container_name: ozet-server-proxy
     restart: "on-failure"
     ports:
       - 10411:10411
     volumes:
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
-  ozet-core:
+  ozet-server:
     image: ozetteam/ozet-server
     container_name: ozet-server
     restart: "on-failure"
